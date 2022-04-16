@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "pinterest"
+  "defaultProject": "pinterest",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
