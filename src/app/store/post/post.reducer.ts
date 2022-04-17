@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as PostActions from './post.actions';
 import { IPostState } from './types';
 
@@ -14,9 +14,15 @@ export const initialState: IPostState = {
 
 export const postReducer = createReducer(
   initialState,
-
-  on(PostActions.fetchPosts, (state, action) => state),
-  on(PostActions.fetchPostsSuccess, (state, action) => state),
+  on(PostActions.fetchPosts, (state, action) => {
+    return { ...state, isLoading: action.isLoading }
+  }),
+  on(PostActions.fetchPostsSuccess, (state, action) => {
+    return {
+      ...state,
+      isLoading: action.isLoading,
+      posts: action.posts
+    }
+  }),
   on(PostActions.fetchPostsFailure, (state, action) => state),
-
 );

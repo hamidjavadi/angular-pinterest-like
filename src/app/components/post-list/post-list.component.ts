@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectPosts } from 'src/app/store/post/post.selectors';
+import { IPost } from 'src/app/types/post';
 
 @Component({
   selector: 'app-post-list',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  constructor() { }
+  posts: IPost[] = [];
+
+  constructor(
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
+    this.store.select(selectPosts).subscribe(posts => this.posts = posts);
   }
 
 }

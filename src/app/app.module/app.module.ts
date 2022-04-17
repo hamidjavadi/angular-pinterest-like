@@ -21,6 +21,7 @@ import { reducers, metaReducers } from '../store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromPost from '../store/post/post.reducer';
 import { ConfigEffects } from '../store/config/config.effects';
+import { IndicatorComponent } from '../components/indicator/indicator.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ConfigEffects } from '../store/config/config.effects';
     IndexComponent,
     PostComponent,
     NavbarComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    IndicatorComponent
   ],
   imports: [
     BrowserModule,
