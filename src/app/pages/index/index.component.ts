@@ -6,7 +6,7 @@ import { selectPostListLoadingState } from 'src/app/store/post/post.selectors';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
 
