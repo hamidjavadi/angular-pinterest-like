@@ -22,20 +22,26 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromPost from '../store/post/post.reducer';
 import { ConfigEffects } from '../store/config/config.effects';
 import { IndicatorComponent } from '../components/indicator/indicator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MasonryComponent } from '../components/masonry/masonry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostListComponent,
     IndexComponent,
-    PostComponent,
+    IndicatorComponent,
+    MasonryComponent,
     NavbarComponent,
+    PostComponent,
     PostDetailsComponent,
-    IndicatorComponent
+    PostListComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
+    EffectsModule.forFeature([PostEffects, ConfigEffects]),
+    EffectsModule.forRoot([]),
     FormsModule,
     FontAwesomeModule,
     HttpClientModule,
@@ -43,9 +49,7 @@ import { IndicatorComponent } from '../components/indicator/indicator.component'
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreModule.forFeature(fromPost.postFeatureKey, fromPost.postReducer),
-    EffectsModule.forFeature([PostEffects, ConfigEffects]),
-    EffectsModule.forRoot([])
+    StoreModule.forFeature(fromPost.postFeatureKey, fromPost.postReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]

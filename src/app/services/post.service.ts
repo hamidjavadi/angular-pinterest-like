@@ -16,7 +16,7 @@ export class PostService {
   ) { }
 
 
-  fetchPosts() {
+  fetchPosts(page: number) {
     try {
 
       this.store.dispatch(postActions.fetchPosts({ isLoading: true }));
@@ -27,7 +27,7 @@ export class PostService {
           apiUrl,
           {
             params: {
-              offset: 1
+              offset: page
             }
           }
         ).subscribe(result => {

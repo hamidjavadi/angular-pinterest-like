@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
 
     this.store.select(selectPostListLoadingState).subscribe(status => this.isLoading = status);
 
-    this.postService.fetchPosts();
+    this.postService.fetchPosts(0);
   }
 
 }
