@@ -9,10 +9,34 @@ import { IPost } from 'src/app/types/post';
 export class PostComponent implements OnInit {
 
   @Input() post!: IPost;
+  show: boolean = false;
+  fade: boolean = false;
+
+  showSetTimeoutHandler: any;
+  fadeSetTimeoutHandler: any;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  mouseEnter() {
+    clearTimeout(this.showSetTimeoutHandler);
+    clearTimeout(this.fadeSetTimeoutHandler);
+
+    this.show = true;
+
+    this.showSetTimeoutHandler = setTimeout(() => {
+      this.fade = true;
+    }, 10);
+  }
+
+  mouseLeave() {
+    this.fade = false;
+
+    this.fadeSetTimeoutHandler = setTimeout(() => {
+      this.show = false;
+    }, 100);
   }
 
 }

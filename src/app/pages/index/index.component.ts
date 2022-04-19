@@ -18,10 +18,8 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.store.select(selectPostListLoadingState).subscribe(status => this.isLoading = status);
-
-    this.postService.fetchPosts(0);
+    this.postService.fetchPosts(20);
   }
 
 }

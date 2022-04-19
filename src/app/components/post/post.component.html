@@ -1,0 +1,20 @@
+<div class="post" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+  <div class="content">
+    <div class="overlay" [ngClass]="{'show': show, 'fade': fade}">
+      <div class="top-items">
+        <span class="btn-save">Save</span>
+      </div>
+      <div class="bottom-items">
+        <span class="circle-button">alsdkfjadls</span>
+        <span class="circle-button">></span>
+        <span class="circle-button">...</span>
+      </div>
+    </div>
+    <div class="post-image-container">
+      <img [src]="post.image_url" class="post-image" />
+    </div>
+  </div>
+  <div class="info">
+    laskdfjajfla
+  </div>
+</div>

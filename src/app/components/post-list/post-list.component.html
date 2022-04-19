@@ -1,5 +1,3 @@
 <div class="post-list">
-  <div class="post" *ngFor="let item of posts">
-    <img [src]="item.image_url" class="post-image" />
-  </div>
+  <app-post *ngFor="let item of posts" [post]="item"></app-post>
 </div>
