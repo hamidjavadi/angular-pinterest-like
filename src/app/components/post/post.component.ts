@@ -13,11 +13,21 @@ export class PostComponent implements OnInit {
   show: boolean = false;
   fade: boolean = false;
 
+  // Fontawesome Iconsi
   iconEllipsis = faEllipsis;
   iconShare = faArrowUpFromBracket;
 
   showSetTimeoutHandler: any;
   fadeSetTimeoutHandler: any;
+
+  // This part is temporary code
+  showAuthorRandomState: boolean = Math.random() < 0.5 ? false : true;
+  showReactionsRandomState: boolean = Math.random() < 0.5 ? false : true;
+  showReacitonAngryRandomState: boolean = Math.random() < 0.5 ? false : true;
+  showReacitonGrinRandomState: boolean = Math.random() < 0.5 ? false : true;
+  showReacitonHeartRandomState: boolean = Math.random() < 0.5 ? false : true;
+  showReactionCountState: boolean = this.showReacitonAngryRandomState || this.showReacitonGrinRandomState || this.showReacitonHeartRandomState;
+  reactionCount: number = Math.floor(Math.random() * 1000);
 
   constructor() { }
 

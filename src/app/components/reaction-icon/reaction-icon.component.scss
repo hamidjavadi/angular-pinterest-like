@@ -1,0 +1,16 @@
+.reaction {
+  display: inline-block;
+  margin: 0 3px 0 0;
+
+  &.grin {
+    color: #FFA726;
+  }
+
+  &.angry {
+    color: #FF9E80;
+  }
+
+  &.heart {
+    color: #E53935;
+  }
+}

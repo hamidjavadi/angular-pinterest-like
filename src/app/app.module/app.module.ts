@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MasonryComponent } from '../components/masonry/masonry.component';
 import { CircleButtonComponent } from '../components/circle-button/circle-button.component';
 import { SaveButtonComponent } from '../components/save-button/save-button.component';
+import { ReactionIconComponent } from '../components/reaction-icon/reaction-icon.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SaveButtonComponent } from '../components/save-button/save-button.compo
     PostListComponent,
     CircleButtonComponent,
     SaveButtonComponent,
+    ReactionIconComponent,
   ],
   imports: [
     BrowserAnimationsModule,

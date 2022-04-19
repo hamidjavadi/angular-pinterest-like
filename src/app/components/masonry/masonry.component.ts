@@ -25,7 +25,7 @@ export class MasonryComponent implements OnInit {
         settings: {
           columns: 2,
           columnGap: 16,
-          rowGap: 40
+          rowGap: 30
         }
       },
       {
@@ -33,7 +33,7 @@ export class MasonryComponent implements OnInit {
         settings: {
           columns: 3,
           columnGap: 16,
-          rowGap: 40
+          rowGap: 30
         }
       },
       {
@@ -41,7 +41,7 @@ export class MasonryComponent implements OnInit {
         settings: {
           columns: 4,
           columnGap: 16,
-          rowGap: 40,
+          rowGap: 30,
         }
       },
       {
@@ -49,7 +49,7 @@ export class MasonryComponent implements OnInit {
         settings: {
           columns: 6,
           columnGap: 16,
-          rowGap: 40,
+          rowGap: 30,
         }
       },
       {
@@ -57,7 +57,7 @@ export class MasonryComponent implements OnInit {
         settings: {
           columns: 7,
           columnGap: 16,
-          rowGap: 40,
+          rowGap: 30,
         }
       }
     ]
