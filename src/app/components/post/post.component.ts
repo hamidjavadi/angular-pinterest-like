@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faArrowUpFromBracket, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { IPost } from 'src/app/types/post';
 
 @Component({
@@ -11,6 +12,9 @@ export class PostComponent implements OnInit {
   @Input() post!: IPost;
   show: boolean = false;
   fade: boolean = false;
+
+  iconEllipsis = faEllipsis;
+  iconShare = faArrowUpFromBracket;
 
   showSetTimeoutHandler: any;
   fadeSetTimeoutHandler: any;

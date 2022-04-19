@@ -24,6 +24,8 @@ import { ConfigEffects } from '../store/config/config.effects';
 import { IndicatorComponent } from '../components/indicator/indicator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MasonryComponent } from '../components/masonry/masonry.component';
+import { CircleButtonComponent } from '../components/circle-button/circle-button.component';
+import { SaveButtonComponent } from '../components/save-button/save-button.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { MasonryComponent } from '../components/masonry/masonry.component';
     PostComponent,
     PostDetailsComponent,
     PostListComponent,
+    CircleButtonComponent,
+    SaveButtonComponent,
   ],
   imports: [
     BrowserAnimationsModule,
