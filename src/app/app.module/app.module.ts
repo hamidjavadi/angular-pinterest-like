@@ -27,6 +27,9 @@ import { MasonryComponent } from '../components/masonry/masonry.component';
 import { CircleButtonComponent } from '../components/circle-button/circle-button.component';
 import { SaveButtonComponent } from '../components/save-button/save-button.component';
 import { ReactionIconComponent } from '../components/reaction-icon/reaction-icon.component';
+import { NavbarCircleButtonComponent } from '../components/navbar-circle-button/navbar-circle-button.component';
+import { NavbarButtonComponent } from '../components/navbar-button/navbar-button.component';
+import { NavbarSearchBoxComponent } from '../components/navbar-search-box/navbar-search-box.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { ReactionIconComponent } from '../components/reaction-icon/reaction-icon
     CircleButtonComponent,
     SaveButtonComponent,
     ReactionIconComponent,
+    NavbarCircleButtonComponent,
+    NavbarButtonComponent,
+    NavbarSearchBoxComponent,
   ],
   imports: [
     BrowserAnimationsModule,
