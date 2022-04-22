@@ -1,1 +1,52 @@
-<h5>{{ post.name }}</h5>
+<div class="post" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+  <div class="content">
+    <div class="overlay" [ngClass]="{'show': show, 'fade': fade}">
+      <div class="top-items">
+        <app-save-button></app-save-button>
+      </div>
+      <div class="bottom-items">
+
+        <!-- a link -->
+        <span></span>
+        <!--/ a link -->
+
+        <!-- Share menu -->
+        <app-circle-button>
+          <fa-icon [icon]="iconShare" buttonIcon></fa-icon>
+        </app-circle-button>
+        <!--/ Share menu -->
+
+        <!-- Image menu -->
+        <app-circle-button>
+          <fa-icon [icon]="iconEllipsis" buttonIcon></fa-icon>
+        </app-circle-button>
+        <!--/ Image menu -->
+
+      </div>
+    </div>
+
+    <!-- Post image -->
+    <div class="post-image-container">
+      <img [src]="post.image_url" class="post-image" />
+    </div>
+    <!--/ Post image -->
+  </div>
+  <div class="info">
+    <!-- Author -->
+    <a class="post-author" href="javascript:" *ngIf="showAuthorRandomState">
+      <img class="post-author-image"
+        src="https://hamidjavadi.com/assets/template/hamidjavadi/img/logo-hamid-javadi.jpg">
+      <span class="post-author-name">Hamid Javadi</span>
+    </a>
+    <!--/ Author -->
+
+    <!-- Reactions -->
+    <div class="post-reactions" *ngIf="showReactionsRandomState">
+      <app-reaction-icon [type]="'angry'" *ngIf="showReacitonAngryRandomState"></app-reaction-icon>
+      <app-reaction-icon [type]="'grin'" *ngIf="showReacitonGrinRandomState"></app-reaction-icon>
+      <app-reaction-icon [type]="'heart'" *ngIf="showReacitonHeartRandomState"></app-reaction-icon>
+      <span *ngIf="showReactionCountState">{{ reactionCount }}</span>
+    </div>
+    <!--/ Reactions -->
+  </div>
+</div>

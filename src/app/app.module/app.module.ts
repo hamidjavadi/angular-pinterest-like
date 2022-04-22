@@ -22,20 +22,38 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromPost from '../store/post/post.reducer';
 import { ConfigEffects } from '../store/config/config.effects';
 import { IndicatorComponent } from '../components/indicator/indicator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MasonryComponent } from '../components/masonry/masonry.component';
+import { CircleButtonComponent } from '../components/circle-button/circle-button.component';
+import { SaveButtonComponent } from '../components/save-button/save-button.component';
+import { ReactionIconComponent } from '../components/reaction-icon/reaction-icon.component';
+import { NavbarCircleButtonComponent } from '../components/navbar-circle-button/navbar-circle-button.component';
+import { NavbarButtonComponent } from '../components/navbar-button/navbar-button.component';
+import { NavbarSearchBoxComponent } from '../components/navbar-search-box/navbar-search-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostListComponent,
     IndexComponent,
-    PostComponent,
+    IndicatorComponent,
+    MasonryComponent,
     NavbarComponent,
+    PostComponent,
     PostDetailsComponent,
-    IndicatorComponent
+    PostListComponent,
+    CircleButtonComponent,
+    SaveButtonComponent,
+    ReactionIconComponent,
+    NavbarCircleButtonComponent,
+    NavbarButtonComponent,
+    NavbarSearchBoxComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
+    EffectsModule.forFeature([PostEffects, ConfigEffects]),
+    EffectsModule.forRoot([]),
     FormsModule,
     FontAwesomeModule,
     HttpClientModule,
@@ -43,9 +61,7 @@ import { IndicatorComponent } from '../components/indicator/indicator.component'
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreModule.forFeature(fromPost.postFeatureKey, fromPost.postReducer),
-    EffectsModule.forFeature([PostEffects, ConfigEffects]),
-    EffectsModule.forRoot([])
+    StoreModule.forFeature(fromPost.postFeatureKey, fromPost.postReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]
