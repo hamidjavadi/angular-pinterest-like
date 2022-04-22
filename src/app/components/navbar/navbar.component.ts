@@ -15,12 +15,15 @@ export class NavbarComponent implements OnInit {
   iconBell = faBell;
   iconCommentDots = faCommentDots;
 
+  isMobile: boolean = false;
+
   constructor(
     private el: ElementRef
   ) { }
 
   ngOnInit(): void {
     this.setupNavbar();
+    this.isMobile = isMobile;
   }
 
   setupNavbar() {
@@ -29,7 +32,7 @@ export class NavbarComponent implements OnInit {
 
     // Set if the device is mobile
     if (isMobile) {
-      navbarContainer!.setAttribute('is-mobile', '');
+      navbarContainer?.setAttribute('is-mobile', '');
     }
   }
 

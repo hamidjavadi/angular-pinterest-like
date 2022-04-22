@@ -30,6 +30,7 @@ import { ReactionIconComponent } from '../components/reaction-icon/reaction-icon
 import { NavbarCircleButtonComponent } from '../components/navbar-circle-button/navbar-circle-button.component';
 import { NavbarButtonComponent } from '../components/navbar-button/navbar-button.component';
 import { NavbarSearchBoxComponent } from '../components/navbar-search-box/navbar-search-box.component';
+import { FloatNavbarComponent } from '../components/float-navbar/float-navbar.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { NavbarSearchBoxComponent } from '../components/navbar-search-box/navbar
     NavbarCircleButtonComponent,
     NavbarButtonComponent,
     NavbarSearchBoxComponent,
+    FloatNavbarComponent,
   ],
   imports: [
     BrowserAnimationsModule,
