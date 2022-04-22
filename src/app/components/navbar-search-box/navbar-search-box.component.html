@@ -1,0 +1,9 @@
+<div class="navbar-search-box">
+  <div class="search-box" [ngClass]="{'active': searchBoxActivated}">
+    <span class="search-box-icon">
+      <fa-icon [icon]="searchIcon"></fa-icon>
+    </span>
+    <input (ngModelChange)="keywordChanged()" [(ngModel)]="keyword" placeholder="Search" type="text"
+      class="search-box-input" id="search-keyword" (focus)="activateSearchBox()" (focusout)="deactivateSearchBox()">
+  </div>
+</div>
