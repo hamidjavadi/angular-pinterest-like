@@ -47,5 +47,8 @@ export class PostService {
     }
   }
 
+  filterPosts(keyword: string = '') {
+    this.store.dispatch(postActions.filterPosts({ flterKeyword: keyword }));
+  }
 
 }

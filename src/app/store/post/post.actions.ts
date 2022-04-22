@@ -23,3 +23,10 @@ export const fetchPostsFailure = createAction(
     isLoading: boolean
   }>()
 );
+
+export const filterPosts = createAction(
+  '[Post] Filter Posts',
+  props<{
+    flterKeyword: string
+  }>()
+)

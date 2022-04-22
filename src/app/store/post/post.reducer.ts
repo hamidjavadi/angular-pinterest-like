@@ -6,6 +6,7 @@ export const postFeatureKey = 'posts';
 
 export const initialState: IPostState = {
   currentPage: -1,
+  filterKeyword: '',
   isLoading: false,
   perPage: 60,
   posts: [],
@@ -25,4 +26,10 @@ export const postReducer = createReducer(
     }
   }),
   on(PostActions.fetchPostsFailure, (state, action) => state),
+  on(PostActions.filterPosts, (state, action) => {
+    return {
+      ...state,
+      filterKeyword: action.flterKeyword
+    }
+  })
 );

@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 
-<app-masonry>
-  <app-post-list></app-post-list>
-</app-masonry>
+<div id="post-container">
+  <app-masonry>
+    <app-post-list></app-post-list>
+  </app-masonry>
+</div>
 <app-indicator *ngIf="isLoading" size="48px"></app-indicator>

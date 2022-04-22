@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { IPost } from 'src/app/types/post';
 import { postFeatureKey } from './post.reducer';
 import { IPostState } from './types';
 
@@ -16,5 +17,20 @@ export const selectPostListLoadingState = createSelector(
 
 export const selectPosts = createSelector(
   selectPostState,
-  (state: IPostState) => state.posts
+  (state: IPostState) => {
+
+    let posts: IPost[] = [];
+
+    if (state.filterKeyword === '') {
+      posts = state.posts
+    } else {
+
+      posts = state.posts.filter((post, index) => {
+        return post.description?.includes(state.filterKeyword);
+      })
+
+    }
+
+    return posts;
+  }
 )
