@@ -2,7 +2,10 @@ export interface MasonryOptions {
   breakpointsContainer: string,
   itemSelector: string,
   container: string,
-  breakpoints: MasonryBreakpoint[]
+  breakpoints: {
+    desktop: MasonryBreakpoint[],
+    mobile: MasonryBreakpoint[]
+  }
 }
 
 export interface MasonryBreakpoint {

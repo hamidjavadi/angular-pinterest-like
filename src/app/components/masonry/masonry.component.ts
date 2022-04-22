@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { MasonryBreakpoint, MasonryOptions } from './types';
+import isMobile from 'src/app/utils/isMobile';
 
 @Component({
   selector: 'app-masonry',
@@ -19,48 +20,92 @@ export class MasonryComponent implements OnInit {
     breakpointsContainer: 'window', // specifies the element to check the breakpoints with id
     itemSelector: '.post',
     container: '.post-list',
-    breakpoints: [
-      {
-        maxWidth: 578,
-        settings: {
-          columns: 2,
-          columnGap: 16,
-          rowGap: 30
+    breakpoints: {
+      desktop: [
+        {
+          maxWidth: 578,
+          settings: {
+            columns: 2,
+            columnGap: 16,
+            rowGap: 30
+          }
+        },
+        {
+          maxWidth: 768,
+          settings: {
+            columns: 3,
+            columnGap: 16,
+            rowGap: 30
+          }
+        },
+        {
+          maxWidth: 992,
+          settings: {
+            columns: 4,
+            columnGap: 16,
+            rowGap: 30,
+          }
+        },
+        {
+          maxWidth: 1200,
+          settings: {
+            columns: 6,
+            columnGap: 16,
+            rowGap: 30,
+          }
+        },
+        {
+          maxWidth: 1440,
+          settings: {
+            columns: 7,
+            columnGap: 16,
+            rowGap: 30,
+          }
         }
-      },
-      {
-        maxWidth: 768,
-        settings: {
-          columns: 3,
-          columnGap: 16,
-          rowGap: 30
+      ],
+      mobile: [
+        {
+          maxWidth: 578,
+          settings: {
+            columns: 2,
+            columnGap: 8,
+            rowGap: 15
+          }
+        },
+        {
+          maxWidth: 768,
+          settings: {
+            columns: 3,
+            columnGap: 8,
+            rowGap: 15
+          }
+        },
+        {
+          maxWidth: 992,
+          settings: {
+            columns: 5,
+            columnGap: 8,
+            rowGap: 15,
+          }
+        },
+        {
+          maxWidth: 1200,
+          settings: {
+            columns: 7,
+            columnGap: 8,
+            rowGap: 15,
+          }
+        },
+        {
+          maxWidth: 1440,
+          settings: {
+            columns: 9,
+            columnGap: 8,
+            rowGap: 15,
+          }
         }
-      },
-      {
-        maxWidth: 992,
-        settings: {
-          columns: 4,
-          columnGap: 16,
-          rowGap: 30,
-        }
-      },
-      {
-        maxWidth: 1200,
-        settings: {
-          columns: 6,
-          columnGap: 16,
-          rowGap: 30,
-        }
-      },
-      {
-        maxWidth: 1440,
-        settings: {
-          columns: 7,
-          columnGap: 16,
-          rowGap: 30,
-        }
-      }
-    ]
+      ]
+    },
   }
 
   constructor(private el: ElementRef) {
@@ -70,7 +115,7 @@ export class MasonryComponent implements OnInit {
   ngOnInit() {
     this.sortBreakpoints();
     this.setCurrentBreakpoint();
-    this.setContainer();
+    this.setupContainer();
 
     setInterval(() => {
       this.setCurrentBreakpoint();
@@ -85,9 +130,13 @@ export class MasonryComponent implements OnInit {
   }
 
   // Makes grid container ready by setting its position to relative
-  setContainer() {
+  setupContainer() {
     this.gridContainer = this.masonryGrid!.querySelector(this.options.container);
     this.gridContainer!.style.position = 'relative';
+
+    // Set if the device is mobile
+    if (isMobile)
+      this.gridContainer!.setAttribute('is-mobie', '');
   }
 
   setItems() {
@@ -141,7 +190,11 @@ export class MasonryComponent implements OnInit {
   }
 
   sortBreakpoints() {
-    this.options.breakpoints = this.options.breakpoints.sort((breakpointA, breakpointB) =>
+    this.options.breakpoints.desktop = this.options.breakpoints.desktop.sort((breakpointA, breakpointB) =>
+      breakpointA.maxWidth - breakpointB.maxWidth
+    );
+
+    this.options.breakpoints.mobile = this.options.breakpoints.mobile.sort((breakpointA, breakpointB) =>
       breakpointA.maxWidth - breakpointB.maxWidth
     );
   }
@@ -151,7 +204,11 @@ export class MasonryComponent implements OnInit {
     let breakpointContainer: Window | Object | HTMLElement | null;
 
     // Default breakpoint
-    this.currentBreakpoint = this.options.breakpoints[this.options.breakpoints.length - 1];
+    if (isMobile) {
+      this.currentBreakpoint = this.options.breakpoints.mobile[this.options.breakpoints.mobile.length - 1];
+    } else {
+      this.currentBreakpoint = this.options.breakpoints.desktop[this.options.breakpoints.desktop.length - 1];
+    }
 
     // Begin to set the breakpoints container
     if (this.options.breakpointsContainer === 'window'
@@ -166,7 +223,15 @@ export class MasonryComponent implements OnInit {
     // End to set the breakpoints container
 
     // Begin to set the current breakpoint
-    const breakpointByFind = this.options.breakpoints.find((breakpoint) => {
+    let brakpointSource: MasonryBreakpoint[];
+
+    if (isMobile) {
+      brakpointSource = this.options.breakpoints.mobile;
+    } else {
+      brakpointSource = this.options.breakpoints.mobile;
+    }
+
+    const breakpointByFind = brakpointSource.find((breakpoint) => {
 
       if (breakpointContainer instanceof Window) {
         if (breakpointContainer.innerWidth < breakpoint.maxWidth) {
