@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-navbar-search-box',
@@ -8,11 +9,16 @@ import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarSearchBoxComponent implements OnInit {
 
-  keyword: string = ''
+  // Fontawesome
   searchIcon: IconDefinition = faSearch;
+  timesIcon: IconDefinition = faTimesCircle;
+
+  keyword: string = ''
   searchBoxActivated: boolean = false;
 
-  constructor() { }
+  constructor(
+    private postService: PostService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -25,8 +31,13 @@ export class NavbarSearchBoxComponent implements OnInit {
     this.searchBoxActivated = false;
   }
 
-  keywordChanged() {
-    console.log(this.keyword);
+  keywordChanged(event?: Event) {
+    this.postService.filterPosts(this.keyword);
+  }
+
+  resetKeyword() {
+    this.keyword = '';
+    this.keywordChanged();
   }
 
 }
