@@ -31,6 +31,7 @@ import { NavbarCircleButtonComponent } from '../components/navbar-circle-button/
 import { NavbarButtonComponent } from '../components/navbar-button/navbar-button.component';
 import { NavbarSearchBoxComponent } from '../components/navbar-search-box/navbar-search-box.component';
 import { FloatNavbarComponent } from '../components/float-navbar/float-navbar.component';
+import { SearchComponent } from '../pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FloatNavbarComponent } from '../components/float-navbar/float-navbar.co
     NavbarButtonComponent,
     NavbarSearchBoxComponent,
     FloatNavbarComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserAnimationsModule,
