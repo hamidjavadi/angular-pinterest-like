@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectApiUrl } from '../store/config/config.selectors';
-import * as postActions from '../store/post/post.actions'
-import { IPost } from '../types/post';
+import { selectApiUrl } from '../../store/config/config.selectors';
+import * as postActions from '../../store/post/post.actions'
+import { IPost } from '../../types/post';
 
 @Injectable({
   providedIn: 'root'

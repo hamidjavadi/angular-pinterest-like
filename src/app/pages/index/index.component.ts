@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PostService } from 'src/app/services/post.service';
+import { PostService } from 'src/app/services/post/post.service';
 import { selectPostListLoadingState } from 'src/app/store/post/post.selectors';
 import isMobile from 'src/app/utils/isMobile';
 

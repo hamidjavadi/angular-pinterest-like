@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch, faTimes, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { PostService } from 'src/app/services/post.service';
+import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
   selector: 'app-navbar-search-box',

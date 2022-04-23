@@ -1,4 +1,4 @@
-<div class="float-navbar" *ngIf="isMobile">
+<div class="float-navbar" *ngIf="isMobile" [ngClass]="{'go-out': floatNavState}">
   <nav class="nav-menu">
     <span class="float-menu-item active">
       <fa-icon [icon]="homeIcon"></fa-icon>
