@@ -14,7 +14,7 @@ export const selectPostListLoadingState = createSelector(
   }
 )
 
-
+// Used for filter posts in the postList on homepage
 export const selectPosts = createSelector(
   selectPostState,
   (state: IPostState) => {
@@ -32,5 +32,23 @@ export const selectPosts = createSelector(
     }
 
     return posts;
+  }
+)
+
+
+export const searchPosts = (keyword: string) => createSelector(
+  selectPostState,
+  (state: IPostState) => {
+
+    let posts: IPost[] = [];
+
+    if (keyword === '') {
+      posts = [];
+    } else {
+      posts = state.posts.filter((post) => post.description?.includes(keyword))
+    }
+
+    return posts;
+
   }
 )

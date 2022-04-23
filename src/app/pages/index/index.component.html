@@ -5,4 +5,6 @@
     <app-post-list></app-post-list>
   </app-masonry>
 </div>
-<app-indicator *ngIf="isLoading" size="48px"></app-indicator>
+<div id="indicator-container" *ngIf="isLoading">
+  <app-indicator size="48px"></app-indicator>
+</div>

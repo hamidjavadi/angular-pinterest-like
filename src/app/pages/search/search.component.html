@@ -1,1 +1,25 @@
-<p>search works!</p>
+<div class="search-box flex">
+  <div class="search-input flex">
+    <span class="search-icon flex">
+      <fa-icon [icon]="searchIcon"></fa-icon>
+    </span>
+    <input class="search-keyword" (ngModelChange)="keywordChanged()" (paste)="keywordChanged()" [(ngModel)]="keyword"
+      type="text" name="search-keyword" autocomplete="off" placeholder="Search" />
+    <span (click)="clearSearch()" class="cancel-search-icon flex">
+      <fa-icon [icon]="cancelIcon"></fa-icon>
+    </span>
+  </div>
+  <span class="cancel-search flex" (click)="cancelSearch()">Cancel</span>
+</div>
+
+<div class="search-results">
+  <ul>
+    <li class="result-item flex" *ngFor="let post of posts">
+      <img class="image" src="{{ post.image_url }}">
+      <div class="details">
+        <h2 class="name">{{ post.name }}</h2>
+        <p class="description">{{ post.description | slice:0:64}}</p>
+      </div>
+    </li>
+  </ul>
+</div>

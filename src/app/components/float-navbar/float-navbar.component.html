@@ -1,9 +1,9 @@
 <div class="float-navbar" *ngIf="isMobile" [ngClass]="{'go-out': floatNavState}">
   <nav class="nav-menu">
-    <span class="float-menu-item active">
+    <span class="float-menu-item active" routerLink="/">
       <fa-icon [icon]="homeIcon"></fa-icon>
     </span>
-    <span class="float-menu-item">
+    <span class="float-menu-item" routerLink="/search">
       <fa-icon [icon]="searchIcon"></fa-icon>
     </span>
     <span class="float-menu-item">
