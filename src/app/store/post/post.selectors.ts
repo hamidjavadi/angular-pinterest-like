@@ -35,7 +35,6 @@ export const selectPosts = createSelector(
   }
 )
 
-
 export const searchPosts = (keyword: string) => createSelector(
   selectPostState,
   (state: IPostState) => {
@@ -50,5 +49,19 @@ export const searchPosts = (keyword: string) => createSelector(
 
     return posts;
 
+  }
+)
+
+export const selectCurrentPage = createSelector(
+  selectPostState,
+  (state: IPostState) => {
+    return state.currentPage;
+  }
+)
+
+export const selectItemsPerPage = createSelector(
+  selectPostState,
+  (state: IPostState) => {
+    return state.perPage;
   }
 )

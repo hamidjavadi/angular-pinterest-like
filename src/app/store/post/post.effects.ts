@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
-import { Observable, EMPTY, of } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs/operators';
+import { PostService } from 'src/app/services/post/post.service';
 
 import * as PostActions from './post.actions';
 
@@ -10,21 +10,14 @@ import * as PostActions from './post.actions';
 @Injectable()
 export class PostEffects {
 
-  // loadPosts$ = createEffect(() => {
-  //   return this.actions$.pipe(
+  constructor(
+    private actions$: Actions,
+    private postService: PostService
+  ) { }
 
-  //     ofType(PostActions.loadPosts),
-  //     concatMap(() =>
-  //       /** An EMPTY observable only emits completion. Replace with your own observable API request */
-  //       EMPTY.pipe(
-  //         map(data => PostActions.loadPostsSuccess({ data })),
-  //         catchError(error => of(PostActions.loadPostsFailure({ error }))))
-  //     )
-  //   );
-  // });
-
-
-
-  constructor(private actions$: Actions) { }
+  loadNextPagePosts$ = createEffect(() => this.actions$.pipe(
+    ofType(PostActions.fetchNextPagePosts),
+    tap(() => this.postService.fetchNextPagePosts())
+  ), { dispatch: false });
 
 }

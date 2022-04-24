@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ScrollDirectionService } from '../services/scroll-direction/scroll-direction.service';
+import { PostService } from '../services/post/post.service';
+import { ScrollService } from '../services/scroll/scroll.service';
 import isMobile from '../utils/isMobile';
 
 @Component({
@@ -11,18 +12,28 @@ export class AppComponent implements OnInit {
   title = 'pinterest';
 
   constructor(
-    private scrollService: ScrollDirectionService
+    private postService: PostService,
+    private scrollService: ScrollService,
   ) { }
 
   ngOnInit() {
+
+    // Fetch the posts when the application started at first time
+    this.postService.fetchPosts(0);
+
+    this.scrollService.startMonitoringScrollPosition();
+
     if (isMobile) {
-      this.scrollService.startMonitoring();
+      this.scrollService.startMonitoringDirection();
     }
   }
 
   ngOnDestroy() {
+
+    this.scrollService.stopMonitoringScrollPosition();
+
     if (isMobile) {
-      this.scrollService.stopMonitoring();
+      this.scrollService.stopMonitoringDirection();
     }
   }
 

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ScrollDirectionService } from './scroll-direction.service';
+import { ScrollDirectionService } from './scroll.service';
 
 describe('ScrollDirectionService', () => {
   let service: ScrollDirectionService;

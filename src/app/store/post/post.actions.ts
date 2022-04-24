@@ -11,8 +11,9 @@ export const fetchPosts = createAction(
 export const fetchPostsSuccess = createAction(
   '[Post] Fetch Posts Success',
   props<{
+    currentPage: number
+    isLoading: boolean,
     posts: IPost[],
-    isLoading: boolean
   }>()
 );
 
@@ -29,4 +30,8 @@ export const filterPosts = createAction(
   props<{
     flterKeyword: string
   }>()
+)
+
+export const fetchNextPagePosts = createAction(
+  '[Post] Fetch Next Page Posts',
 )

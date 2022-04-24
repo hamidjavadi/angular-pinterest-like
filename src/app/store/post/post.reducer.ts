@@ -10,7 +10,7 @@ export const initialState: IPostState = {
   isLoading: false,
   perPage: 60,
   posts: [],
-  total: 0,
+  total: 0 // TODO: Check total posts
 };
 
 export const postReducer = createReducer(
@@ -19,10 +19,14 @@ export const postReducer = createReducer(
     return { ...state, isLoading: action.isLoading }
   }),
   on(PostActions.fetchPostsSuccess, (state, action) => {
+
+    const posts = [...state.posts, ...action.posts];
+
     return {
       ...state,
+      currentPage: action.currentPage,
       isLoading: action.isLoading,
-      posts: action.posts
+      posts: posts
     }
   }),
   on(PostActions.fetchPostsFailure, (state, action) => state),
