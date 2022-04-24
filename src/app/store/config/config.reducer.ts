@@ -6,7 +6,7 @@ export const configFeatureKey = 'config';
 
 export const initialState: IConfigState = {
   api: {
-    url: "http://xoosha.com/ws/1/test.php"
+    url: "https://xoosha.com/ws/1/test.php"
   }
 };
 
